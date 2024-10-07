@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CNPM_Community_support.Module")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e90486b04c658964cfb60c27aa7357b1071d525")]
 [assembly: System.Reflection.AssemblyProductAttribute("CNPM_Community_support.Module")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CNPM_Community_support.Module")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.*")]

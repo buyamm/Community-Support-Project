@@ -1,0 +1,13 @@
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\bin\Debug\net8.0\CNPM_Community_support.Module.deps.json
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\bin\Debug\net8.0\CNPM_Community_support.Module.dll
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\bin\Debug\net8.0\CNPM_Community_support.Module.pdb
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.csproj.AssemblyReference.cache
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.GeneratedMSBuildEditorConfig.editorconfig
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.AssemblyInfoInputs.cache
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.AssemblyInfo.cs
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.csproj.CoreCompileInputs.cache
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.sourcelink.json
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.dll
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\refint\CNPM_Community_support.Module.dll
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\CNPM_Community_support.Module.pdb
+D:\_DEV\C#\CNPM_Community_support\CNPM_Community_support.Module\obj\Debug\net8.0\ref\CNPM_Community_support.Module.dll

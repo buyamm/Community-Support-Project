@@ -1,11 +1,27 @@
-﻿<?xml version="1.0" ?>
-<Application Title="CNPM_Community_support">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Community Support">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="@1922abd3-43a8-4857-b2de-ad86c261477b" Caption="Quản lý" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@652c4e03-8a48-4024-b49f-65363bd55e13" ViewId="Bieumau_ListView" Caption="Biểu mẫu" IsNewNode="True" />
+          <Item Id="@6f19cf17-3d44-46aa-9057-213a47dc79f6" ViewId="Danhmuc_ListView" Caption="Danh mục" IsNewNode="True" />
+          <Item Id="@8c29abc1-62f4-4277-a088-cae26d9bdfa7" ViewId="User_ListView" Caption="Người dùng" IsNewNode="True" />
+          <Item Id="@a6a5ab99-0075-4efb-89be-00424ea30e2d" ViewId="Quyengop_ListView" Caption="Quyên góp" IsNewNode="True" />
+          <Item Id="@cef4295a-9d93-4e25-bd64-e0df968c57df" ViewId="Tochuc_ListView" Caption="Tổ chức" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="24.1.5.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
   </Views>
