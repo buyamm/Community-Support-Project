@@ -4,7 +4,7 @@ package com.project.community_support.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Set;
 
 @Entity
@@ -20,7 +20,7 @@ public class Form {
     private String phoneNumber;
     private String address;
     private String description;
-    private LocalDateTime dateOfApplication;
+    private Instant dateOfApplication;
     private boolean isTemp;
 
     @ManyToOne
