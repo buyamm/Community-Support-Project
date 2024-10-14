@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="./login_format/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./login_format/script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container sign-in-container">
+            <form id="login-form">
+                <h1>Đăng nhập</h1>
+                <input type="text" id="login-username" placeholder="Username" required />
+                <input type="password" id="login-password" placeholder="Password" required />
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+
+        <div class="form-container sign-up-container">
+            <form id="register-form">
+                <h1>Đăng ký</h1>
+                <input type="text" id="register-name" placeholder="Họ và tên" required />
+                <input type="email" id="register-email" placeholder="Email" required />
+                <input type="password" id="register-password" placeholder="Mật khẩu" required />
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Chào mừng trở lại!</h1>
+                    <p>Hãy đăng nhập để tiếp tục với chúng tôi</p>
+                    <button class="switch-button" id="signIn">Đăng nhập</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Xin chào!</h1>
+                    <p>Đăng ký tài khoản để khám phá thêm</p>
+                    <button class="switch-button" id="signUp">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
