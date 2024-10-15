@@ -9,6 +9,8 @@ import com.project.community_support.exception.ErrorCode;
 import com.project.community_support.mapper.UserMapper;
 import com.project.community_support.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +28,9 @@ public class UserService {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
-//        no encryption for password yet
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         User user = userMapper.toUser(request);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         return userMapper.toUserResponse(userRepository.save(user));
     }
