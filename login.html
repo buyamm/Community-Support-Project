@@ -7,16 +7,17 @@
     <title>Login & Register</title>
     <link rel="stylesheet" href="./wp-content/login/style.css">
     <script src="./libs/jquery/jquery-3.6.0.min.js"></script>
-    <script src="./wp-content/login/script.js" defer></script>
+    <script type="module" src="./wp-content/login/script.js"></script>
 </head>
 
 <body>
     <div class="container">
+
         <div class="form-container sign-in-container">
             <form id="login-form">
                 <h1>Đăng nhập</h1>
-                <input type="text" id="login-username" placeholder="Username" required />
-                <input type="password" id="login-password" placeholder="Password" required />
+                <input autocomplete="tel" type="tel" id="login-phone" placeholder="Số điện thoại" required />
+                <input type="password" id="login-password" placeholder="Mật khẩu" required />
                 <button type="submit">Đăng nhập</button>
             </form>
         </div>
@@ -24,9 +25,13 @@
         <div class="form-container sign-up-container">
             <form id="register-form">
                 <h1>Đăng ký</h1>
-                <input type="text" id="register-name" placeholder="Họ và tên" required />
-                <input type="email" id="register-email" placeholder="Email" required />
-                <input type="password" id="register-password" placeholder="Mật khẩu" required />
+                <input autocomplete="name" type="text" id="register-name" placeholder="Họ và tên" required />
+                <input autocomplete="tel" type="tel" id="register-phone" placeholder="Số điện thoại" required />
+                <input autocomplete="new-password" type="password" id="register-password" placeholder="Mật khẩu"
+                    required />
+                <input type="number" id="register-cccd" placeholder="CCCD" required />
+                <input autocomplete="street-address" type="text" id="register-address" placeholder="Địa chỉ" required />
+
                 <button type="submit">Đăng ký</button>
             </form>
         </div>
