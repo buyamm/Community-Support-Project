@@ -20,7 +20,9 @@ public class Form {
     private String phoneNumber;
     private String address;
     private String description;
-    private Instant dateOfApplication;
+    private Long target;
+    private Instant deadline;
+    private Instant dateOfApplication = Instant.now();
     private boolean isTemp;
 
     @ManyToOne
