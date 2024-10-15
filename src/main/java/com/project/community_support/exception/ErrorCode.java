@@ -17,6 +17,9 @@ public enum ErrorCode {
     PASSWORD_INVALID(1006, "Password must be at least 8 character", HttpStatus.BAD_REQUEST),
     CCCD_INVALID(1007, "CCCD must be at least 12 character", HttpStatus.BAD_REQUEST),
 
+
+    INVALID_KEY(8888, "Invalid message key", HttpStatus.BAD_REQUEST),
+
     ;
 
 
