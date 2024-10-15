@@ -6,6 +6,7 @@ import com.project.community_support.dto.response.ApiResponse;
 import com.project.community_support.dto.response.UserResponse;
 import com.project.community_support.entity.User;
 import com.project.community_support.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    ApiResponse<UserResponse> createUser(@RequestBody UserCreationRequest request){
+    ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request){
         ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
 
         apiResponse.setCode(1000);
