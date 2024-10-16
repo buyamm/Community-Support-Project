@@ -1004,12 +1004,53 @@
 										</div>
 									</div>
 								</li>
-								<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
-										Đăng nhập </a></li>
-
+								<li class="html custom html_topbar_left">
+									<a href="javascript:void(0)" class="btn-sign-in" onclick="toggleNotify()">Đăng
+										nhập</a>
+									<!-- Hộp thông báo -->
+									<div id="headerNotify" class="header-notify">
+										<ul>
+											<li class="header-notify-item" style="list-style-type: none;">Thông báo 1
+											</li>
+											<li class="header-notify-item" style="list-style-type: none;">Thông báo 2
+											</li>
+											<li class="header-notify-item" style="list-style-type: none;">Thông báo 3
+											</li>
+											<li class="header-notify-item" style="list-style-type: none;">Thông báo 4
+											</li>
+										</ul>
+									</div>
+								</li>
 
 							</ul>
 						</div>
+
+						<style>
+							/* Ban đầu ẩn hộp thông báo */
+							.header-notify {
+								margin-top: 5px;
+								display: none;
+								position: absolute;
+								top: 100%;
+								width: 200px;
+								background-color: #fcfcfc;
+								right: -20px;
+								border-radius: 15px;
+								box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+								text-align: center;
+								z-index: 10;
+							}
+	
+							.header-notify-item {
+								padding: 10px;
+								border-bottom: 1px solid #ddd;
+							}
+	
+							/* Xóa viền dưới cho phần tử cuối cùng */
+							.header-notify-item:last-child {
+								border-bottom: none;
+							}
+						</style>
 
 						<!-- Mobile Right Elements -->
 						<div class="flex-col show-for-medium flex-right">
