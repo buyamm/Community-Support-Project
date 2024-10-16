@@ -54,7 +54,7 @@ public class ApiResponse<T> {
 }
 ```
 
-_(Updating)_
+_(Updating ...)_
 
 ```java
     USER_EXISTED(1001, "User existed with this phone number", HttpStatus.BAD_REQUEST),
