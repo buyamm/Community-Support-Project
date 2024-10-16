@@ -9,6 +9,19 @@
 ## How to using endpoints:
 
 **_1. Authentication endpoint:_**
+- [/api/auth/login](#/api/auth/login) -> **_GET: login with 2 options (organization or user)_**
+> **_Input data_**
+>
+> ![image](https://github.com/user-attachments/assets/86742b15-8989-45a3-9e9b-bb7c2fca0519)
+>
+> ![image](https://github.com/user-attachments/assets/7914c52b-7f6c-4aab-9234-f57ec5f13801)
+
+> **_Output_**
+>
+> ![image](https://github.com/user-attachments/assets/dc669cf8-c5a5-4e02-b562-cfb18ede3454)
+>
+> ![image](https://github.com/user-attachments/assets/42654822-11fa-4823-b087-d901aa769d77)
+
 
 **_2. User endpoints:_**
 
