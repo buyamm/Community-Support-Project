@@ -28,6 +28,10 @@ public class UserService {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
+        if (userRepository.existsByCccd(request.getCccd())) {
+            throw new AppException(ErrorCode.USER_EXISTED);
+        }
+
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         User user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));

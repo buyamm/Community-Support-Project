@@ -1,5 +1,6 @@
-package com.project.community_support.dto.response;
+package com.project.community_support.dto.request;
 
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Getter
@@ -7,13 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrganizationResponse {
-    private String id;
-    private String phoneNumber;
+public class OrganizationUpdateRequest {
+    @Size(min = 8, message = "PASSWORD_INVALID")
     private String password;
     private String organizationName;
     private String representativeName;
-    private String cccd;
     private String address;
     private String description;
 }
