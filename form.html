@@ -33,10 +33,18 @@
 	<link rel='prefetch' href='wp-content/themes/flatsome/assets/js/chunk.popups110d.js?ver=3.18.1' />
 	<link rel='prefetch' href='wp-content/themes/flatsome/assets/js/chunk.tooltips110d.js?ver=3.18.1' />
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+	integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="libs/select2/select2.css" />
 	<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 	<script src="libs/select2/select2.full.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+	 integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMER0V8g6uJ3Zgtf0Ed6o6/xzC14io4U5d0oO" crossorigin="anonymous">
 
 	<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Cặp lá yêu thương &raquo;"
 		href="feed/index.html" />
@@ -1011,9 +1019,15 @@
 									</div>
 								</li> <!-- Mobile Right Elements -->
 								<li class="html custom html_topbar_left">
-									<a href="javascript:void(0)" class="btn-sign-in" onclick="toggleNotify()">Đăng
-										nhập</a>
-									<!-- Hộp thông báo -->
+									<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
+										Đăng nhập </a></li>
+								</li>
+								
+								<li>
+									<a href="javascript:void(0)" class="btn-sign-in" onclick="toggleNotify()">
+										<i class="fa-solid fa-user" style="font-size: 15px;"></i>
+									</a>
+																		<!-- Hộp thông báo -->
 									<div id="headerNotify" class="header-notify">
 										<ul>
 											<li class="header-notify-item" style="list-style-type: none;">Thông báo 1
@@ -1025,17 +1039,10 @@
 											<li class="header-notify-item" style="list-style-type: none;">Thông báo 4
 											</li>
 										</ul>
-									</div>
+									</div>								
 								</li>
-
-
-
 							</ul>
 						</div>
-
-
-
-
 					</div>
 					<style>
 						/* Ban đầu ẩn hộp thông báo */

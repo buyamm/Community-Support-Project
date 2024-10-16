@@ -25,7 +25,9 @@
 		class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://caplayeuthuong.vn/","url":"https://caplayeuthuong.vn/","name":"Cặp lá yêu thương","isPartOf":{"@id":"https://caplayeuthuong.vn/#website"},"about":{"@id":"https://caplayeuthuong.vn/#organization"},"datePublished":"2024-01-28T13:54:37+00:00","dateModified":"2024-07-29T06:54:00+00:00","breadcrumb":{"@id":"https://caplayeuthuong.vn/#breadcrumb"},"inLanguage":"vi","potentialAction":[{"@type":"ReadAction","target":["https://caplayeuthuong.vn/"]}]},{"@type":"BreadcrumbList","@id":"https://caplayeuthuong.vn/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ"}]},{"@type":"WebSite","@id":"https://caplayeuthuong.vn/#website","url":"https://caplayeuthuong.vn/","name":"Cặp lá yêu thương","description":"","publisher":{"@id":"https://caplayeuthuong.vn/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://caplayeuthuong.vn/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"vi"},{"@type":"Organization","@id":"https://caplayeuthuong.vn/#organization","name":"Cặp lá yêu thương","url":"https://caplayeuthuong.vn/","logo":{"@type":"ImageObject","inLanguage":"vi","@id":"https://caplayeuthuong.vn/#/schema/logo/image/","url":"https://caplayeuthuong.vn/wp-content/uploads/2024/01/LOGO.png","contentUrl":"https://caplayeuthuong.vn/wp-content/uploads/2024/01/LOGO.png","width":143,"height":138,"caption":"Cặp lá yêu thương"},"image":{"@id":"https://caplayeuthuong.vn/#/schema/logo/image/"}}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+	integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
 	<link href='https://fonts.gstatic.com/' crossorigin rel='preconnect' />
 	<link rel='prefetch' href='wp-content/themes/flatsome/assets/js/flatsomef9b5.js?ver=039f9485eef603e7c53a' />
@@ -1003,11 +1005,17 @@
 											</form>
 										</div>
 									</div>
-								</li>
+								</li> <!-- Mobile Right Elements -->
 								<li class="html custom html_topbar_left">
-									<a href="javascript:void(0)" class="btn-sign-in" onclick="toggleNotify()">Đăng
-										nhập</a>
-									<!-- Hộp thông báo -->
+									<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
+										Đăng nhập </a></li>
+								</li>
+								
+								<li>
+									<a href="javascript:void(0)" class="btn-sign-in" onclick="toggleNotify()">
+										<i class="fa-solid fa-user" style="font-size: 15px;"></i>
+									</a>
+																		<!-- Hộp thông báo -->
 									<div id="headerNotify" class="header-notify">
 										<ul>
 											<li class="header-notify-item" style="list-style-type: none;">Thông báo 1
@@ -1019,12 +1027,10 @@
 											<li class="header-notify-item" style="list-style-type: none;">Thông báo 4
 											</li>
 										</ul>
-									</div>
+									</div>								
 								</li>
-
 							</ul>
 						</div>
-
 						<style>
 							/* Ban đầu ẩn hộp thông báo */
 							.header-notify {
