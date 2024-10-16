@@ -3,7 +3,9 @@ package com.project.community_support.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -20,7 +22,10 @@ public class Form {
     private String phoneNumber;
     private String address;
     private String description;
-    private LocalDateTime dateOfApplication;
+    private Long target;
+    private Instant deadline;
+    @CreationTimestamp
+    private Instant dateOfApplication;
     private boolean isTemp;
 
     @ManyToOne
