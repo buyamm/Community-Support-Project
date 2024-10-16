@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatusCode;
 
 @Getter
 public enum ErrorCode {
-    USER_EXISTED(1001, "User existed with this phone number or this cccd", HttpStatus.BAD_REQUEST),
+    USER_EXISTED(1001, "User existed with this phone number or this identifier number", HttpStatus.BAD_REQUEST),
     USER_NOT_FOUND(1002, "User not found!", HttpStatus.BAD_REQUEST),
 
     WRONG_PHONE_NUMBER(1003, "Wrong phone number",HttpStatus.BAD_REQUEST),
@@ -19,7 +19,7 @@ public enum ErrorCode {
 
 
     INVALID_KEY(8888, "Invalid message key", HttpStatus.BAD_REQUEST),
-
+//    UNAUTHENTICATED(9999, "", HttpStatus.BAD_REQUEST);
     ;
 
 

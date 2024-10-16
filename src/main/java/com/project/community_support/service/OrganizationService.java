@@ -27,6 +27,10 @@ public class OrganizationService {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
+        if (organizationRepository.existsByCccd(request.getCccd())) {
+            throw new AppException(ErrorCode.USER_EXISTED);
+        }
+
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         Organization organization = organizationMapper.toOrganization(request);
         organization.setPassword(passwordEncoder.encode(request.getPassword()));
