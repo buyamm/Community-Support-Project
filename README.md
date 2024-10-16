@@ -5,6 +5,9 @@
 # Our app feature version:
 > _v1-scrum4: first version of the main features in SCRUM sprint 4_
 
+# Our app deployment version:
+> _version0-scrum4: deploy without FORM entity_
+
 # Notes:
 
 - _Input data validation is the responsibility of the front-end. If it have invalided, back-end will reponse with api error code (such as not null, min size, ...)_
