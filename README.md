@@ -3,7 +3,7 @@
 # Using JDK 21 & MySQL for project
 
 # Our app feature version:
-- v1-scrum4: first version of the main features in SCRUM sprint 4
+> _v1-scrum4: first version of the main features in SCRUM sprint 4_
 
 # Notes:
 
