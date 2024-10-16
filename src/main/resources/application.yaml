@@ -3,11 +3,21 @@ server:
 
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
   datasource:
-    url: "jdbc:mysql://localhost:3306/community-support"
+    url: "jdbc:mysql://localhost:3306/community-support?createDatabaseIfNotExist=true"
     username: root
-    password: root
+    password: 123456
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+cloudinary:
+  api-key: 623981926764984
+  api-secret: 4KiPpbpjGp_P_9ivae2YkHUxVuM
+  cloud-name: dryf5c9eh
