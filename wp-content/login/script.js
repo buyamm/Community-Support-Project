@@ -1,4 +1,4 @@
-import { postUser } from "../../common/common.js";
+import { postUser, login } from "../../common/common.js";
 
 $(document).ready(function () {
   //============= Phone ===============
@@ -71,12 +71,12 @@ $(document).ready(function () {
   $("#register-form").submit(function (e) {
     e.preventDefault();
     const name = $("#register-name").val();
-    const phone = $("#register-phone").val();
+    const phoneNumber = $("#register-phone").val();
     const password = $("#register-password").val();
     const cccd = $("#register-cccd").val();
     const address = $("#register-address").val();
 
-    console.log(name, phone, password, cccd, address);
+    console.log(name, phoneNumber, password, cccd, address);
 
     $.ajax({
       url: postUser,
@@ -97,19 +97,32 @@ $(document).ready(function () {
   // ==============   Login  ===============
   $("#login-form").submit(function (e) {
     e.preventDefault();
-    const username = $("#login-username").val();
+    const phoneNumber = $("#login-phone").val();
     const password = $("#login-password").val();
+    const whoAreYou = "user";
 
     $.ajax({
-      url: "http://localhost:8080/leavescoffee/auth/login",
+      url: login,
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ username, password }),
+      data: JSON.stringify({ phoneNumber, password, whoAreYou }),
       success: function (response) {
-        console.log(response);
+        const data = response.result;
+
+        console.log(JSON.stringify(data, null, 2));
+        // for (const key in response) {
+        //   if (response.hasOwnProperty(key)) {
+        //     console.log(`${key}: ${JSON.stringify(response[key])}`);
+        //   }
+        // }
+
+        window.location.href = "http://127.0.0.1:5544/index.html";
+        localStorage.setItem("phoneNumber", phoneNumber);
         alert("Đăng nhập thành công!");
       },
       error: function (error) {
+        console.log(error);
+        console.log(phone + " " + password + " " + whoAreYou);
         alert("Sai thông tin đăng nhập!");
       },
     });

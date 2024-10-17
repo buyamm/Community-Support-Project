@@ -10,6 +10,9 @@
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <link rel="pingback" href="xmlrpc.php" />
 
+  <script src="./libs/jquery/jquery-3.6.0.min.js"></script>
+  <script type="module" src="./common/checkLogin.js"></script>
+
   <script>(function (html) { html.className = html.className.replace(/\bno-js\b/, 'js') })(document.documentElement);</script>
   <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,9 +32,9 @@
     class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://caplayeuthuong.vn/danh-sach-la-chua-lanh/","url":"https://caplayeuthuong.vn/danh-sach-la-chua-lanh/","name":"Danh Sách Lá Chưa Lành - Cặp lá yêu thương","isPartOf":{"@id":"https://caplayeuthuong.vn/#website"},"datePublished":"2024-01-28T14:13:43+00:00","dateModified":"2024-04-10T04:25:58+00:00","breadcrumb":{"@id":"https://caplayeuthuong.vn/danh-sach-la-chua-lanh/#breadcrumb"},"inLanguage":"vi","potentialAction":[{"@type":"ReadAction","target":["https://caplayeuthuong.vn/danh-sach-la-chua-lanh/"]}]},{"@type":"BreadcrumbList","@id":"https://caplayeuthuong.vn/danh-sach-la-chua-lanh/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ","item":"https://caplayeuthuong.vn/"},{"@type":"ListItem","position":2,"name":"Danh Sách Lá Chưa Lành"}]},{"@type":"WebSite","@id":"https://caplayeuthuong.vn/#website","url":"https://caplayeuthuong.vn/","name":"Cặp lá yêu thương","description":"","publisher":{"@id":"https://caplayeuthuong.vn/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://caplayeuthuong.vn/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"vi"},{"@type":"Organization","@id":"https://caplayeuthuong.vn/#organization","name":"Cặp lá yêu thương","url":"https://caplayeuthuong.vn/","logo":{"@type":"ImageObject","inLanguage":"vi","@id":"https://caplayeuthuong.vn/#/schema/logo/image/","url":"https://caplayeuthuong.vn/wp-content/uploads/2024/01/LOGO.png","contentUrl":"https://caplayeuthuong.vn/wp-content/uploads/2024/01/LOGO.png","width":143,"height":138,"caption":"Cặp lá yêu thương"},"image":{"@id":"https://caplayeuthuong.vn/#/schema/logo/image/"}}]}</script>
   <!-- / Yoast SEO plugin. -->
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
-	integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
   <link href='https://fonts.gstatic.com/' crossorigin rel='preconnect' />
   <link rel='prefetch' href='wp-content/themes/flatsome/assets/js/flatsomef9b5.js?ver=039f9485eef603e7c53a' />
@@ -42,8 +45,8 @@
     href="feed/index.html" />
   <link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Cặp lá yêu thương &raquo;"
     href="comments/feed/index.html" />
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-	 integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMER0V8g6uJ3Zgtf0Ed6o6/xzC14io4U5d0oO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMER0V8g6uJ3Zgtf0Ed6o6/xzC14io4U5d0oO" crossorigin="anonymous">
   <script type="text/javascript">
     /* <![CDATA[ */
     window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/caplayeuthuong.vn\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.3" } };
@@ -975,64 +978,61 @@
               </ul>
             </div>
 
-						<!-- Right Elements -->
-						<div class="flex-col hide-for-medium flex-right">
-							<ul
-								class="header-nav header-nav-main nav nav-right  nav-divided nav-size-large nav-uppercase">
-								<li class="header-search header-search-lightbox has-icon">
-									<div class="header-button"> <a href="#search-lightbox" aria-label="Search"
-											data-open="#search-lightbox" data-focus="input.search-field"
-											class="icon primary button circle is-small">
-											<i class="icon-search" style="font-size:16px;"></i></a>
-									</div>
+            <!-- Right Elements -->
+            <div class="flex-col hide-for-medium flex-right">
+              <ul class="header-nav header-nav-main nav nav-right  nav-divided nav-size-large nav-uppercase">
+                <li class="header-search header-search-lightbox has-icon">
+                  <div class="header-button"> <a href="#search-lightbox" aria-label="Search"
+                      data-open="#search-lightbox" data-focus="input.search-field"
+                      class="icon primary button circle is-small">
+                      <i class="icon-search" style="font-size:16px;"></i></a>
+                  </div>
 
-									<div id="search-lightbox" class="mfp-hide dark text-center">
-										<div class="searchform-wrapper ux-search-box relative form-flat is-large">
-											<form method="get" class="searchform" action="https://caplayeuthuong.vn/"
-												role="search">
-												<div class="flex-row relative">
-													<div class="flex-col flex-grow">
-														<input type="search" class="search-field mb-0" name="s" value=""
-															id="s" placeholder="Nhập từ khóa tìm kiếm..." />
-													</div>
-													<div class="flex-col">
-														<button type="submit"
-															class="ux-search-submit submit-button secondary button icon mb-0"
-															aria-label="Submit">
-															<i class="icon-search"></i> </button>
-													</div>
-												</div>
-												<div class="live-search-results text-left z-top"></div>
-											</form>
-										</div>
-									</div>
-								</li> <!-- Mobile Right Elements -->
-								<li class="html custom html_topbar_left">
-									<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
-										Đăng nhập </a></li>
-								</li>
-								
-								<li>
-									<a href="javascript:void(0)" class="btn-sign-in" onclick="toggleNotify()">
-										<i class="fa-solid fa-user" style="font-size: 15px;"></i>
-									</a>
-																		<!-- Hộp thông báo -->
-									<div id="headerNotify" class="header-notify">
-										<ul>
-											<li class="header-notify-item" style="list-style-type: none;">Thông báo 1
-											</li>
-											<li class="header-notify-item" style="list-style-type: none;">Thông báo 2
-											</li>
-											<li class="header-notify-item" style="list-style-type: none;">Thông báo 3
-											</li>
-											<li class="header-notify-item" style="list-style-type: none;">Thông báo 4
-											</li>
-										</ul>
-									</div>								
-								</li>
-							</ul>
-						</div>
-            
+                  <div id="search-lightbox" class="mfp-hide dark text-center">
+                    <div class="searchform-wrapper ux-search-box relative form-flat is-large">
+                      <form method="get" class="searchform" action="https://caplayeuthuong.vn/" role="search">
+                        <div class="flex-row relative">
+                          <div class="flex-col flex-grow">
+                            <input type="search" class="search-field mb-0" name="s" value="" id="s"
+                              placeholder="Nhập từ khóa tìm kiếm..." />
+                          </div>
+                          <div class="flex-col">
+                            <button type="submit" class="ux-search-submit submit-button secondary button icon mb-0"
+                              aria-label="Submit">
+                              <i class="icon-search"></i> </button>
+                          </div>
+                        </div>
+                        <div class="live-search-results text-left z-top"></div>
+                      </form>
+                    </div>
+                  </div>
+                </li> <!-- Mobile Right Elements -->
+                <li class="html custom html_topbar_left">
+                <li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
+                    Đăng nhập </a></li>
+                </li>
+
+                <li>
+                  <a href="javascript:void(0)" class="icon_user" style="display: none;" onclick="toggleNotify()">
+                    <i class="fa-solid fa-user" style="font-size: 15px"></i>
+                  </a>
+                  <!-- Hộp thông báo -->
+                  <div id="headerNotify" class="header-notify">
+                    <ul>
+                      <li class="header-notify-item" style="list-style-type: none;">Thông báo 1
+                      </li>
+                      <li class="header-notify-item" style="list-style-type: none;">Thông báo 2
+                      </li>
+                      <li class="header-notify-item" style="list-style-type: none;">Thông báo 3
+                      </li>
+                      <li class="header-notify-item" style="list-style-type: none;">Thông báo 4
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
             <style>
               /* Ban đầu ẩn hộp thông báo */
               .header-notify {
@@ -1048,12 +1048,12 @@
                 text-align: center;
                 z-index: 10;
               }
-  
+
               .header-notify-item {
                 padding: 10px;
                 border-bottom: 1px solid #ddd;
               }
-  
+
               /* Xóa viền dưới cho phần tử cuối cùng */
               .header-notify-item:last-child {
                 border-bottom: none;
