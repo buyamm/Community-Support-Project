@@ -3,11 +3,21 @@ server:
 
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
   datasource:
-      url: "jdbc:mysql://${DATABASE_HOST:db9052.public.databaseasp.net}:${DATABSE_PORT:3306}/${DATABASE_NAME:db9052}"
+      url: "jdbc:mysql://${DATABASE_HOST:db9052.public.databaseasp.net}:${DATABSE_PORT:3306}/${DATABASE_NAME:db9052}?createDatabaseIfNotExist=true"
       username: ${DATABASE_USER:db9052}
       password: ${DATABASE_PASSWORD:3i#Z+Lb9E7-e}
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+cloudinary:
+  api-key: 623981926764984
+  api-secret: 4KiPpbpjGp_P_9ivae2YkHUxVuM
+  cloud-name: dryf5c9eh

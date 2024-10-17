@@ -2,6 +2,12 @@
 
 # Using JDK 21 & MySQL for project
 
+# Our app feature version:
+> _v1-scrum4: first version of the main features in SCRUM sprint 4_
+
+# Our app deployment version:
+> _version0-scrum4: deploy without FORM entity_
+
 # Notes:
 
 - _Input data validation is the responsibility of the front-end. If it have invalided, back-end will reponse with api error code (such as not null, min size, ...)_
@@ -9,6 +15,19 @@
 ## How to using endpoints:
 
 **_1. Authentication endpoint:_**
+- [/api/auth/login](#/api/auth/login) -> **_GET: login with 2 options (organization or user)_**
+> **_Input data_**
+>
+> ![image](https://github.com/user-attachments/assets/86742b15-8989-45a3-9e9b-bb7c2fca0519)
+>
+> ![image](https://github.com/user-attachments/assets/7914c52b-7f6c-4aab-9234-f57ec5f13801)
+
+> **_Output_**
+>
+> ![image](https://github.com/user-attachments/assets/dc669cf8-c5a5-4e02-b562-cfb18ede3454)
+>
+> ![image](https://github.com/user-attachments/assets/42654822-11fa-4823-b087-d901aa769d77)
+
 
 **_2. User endpoints:_**
 
@@ -57,7 +76,7 @@ public class ApiResponse<T> {
 _(Updating ...)_
 
 ```java
-    USER_EXISTED(1001, "User existed with this phone number", HttpStatus.BAD_REQUEST),
+    USER_EXISTED(1001, "User existed with this phone number or this identifier number", HttpStatus.BAD_REQUEST),
     USER_NOT_FOUND(1002, "User not found!", HttpStatus.BAD_REQUEST),
 
     WRONG_PHONE_NUMBER(1003, "Wrong phone number",HttpStatus.BAD_REQUEST),
@@ -66,4 +85,8 @@ _(Updating ...)_
     PHONE_NUMBER_INVALID(1005, "Phone number must be 10 character", HttpStatus.BAD_REQUEST),
     PASSWORD_INVALID(1006, "Password must be at least 8 character", HttpStatus.BAD_REQUEST),
     CCCD_INVALID(1007, "CCCD must be at least 12 character", HttpStatus.BAD_REQUEST),
+
+
+    INVALID_KEY(8888, "Invalid message key", HttpStatus.BAD_REQUEST),
+//  UNAUTHENTICATED(9999, "", HttpStatus.BAD_REQUEST);
 ```

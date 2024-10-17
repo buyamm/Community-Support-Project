@@ -10,6 +10,10 @@ public enum ErrorCode {
     USER_EXISTED(1001, "User existed with this phone number or this identifier number", HttpStatus.BAD_REQUEST),
     USER_NOT_FOUND(1002, "User not found!", HttpStatus.BAD_REQUEST),
 
+    ORGANIZATION_NOT_FOUND(1002, "Organization not found!", HttpStatus.BAD_REQUEST),
+
+    FORM_NOT_FOUND(1002, "Form not found!", HttpStatus.BAD_REQUEST),
+
     WRONG_PHONE_NUMBER(1003, "Wrong phone number",HttpStatus.BAD_REQUEST),
     WRONG_PASSWORD(1004, "Wrong password",HttpStatus.BAD_REQUEST),
 
