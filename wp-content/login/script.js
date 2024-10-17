@@ -82,7 +82,7 @@ $(document).ready(function () {
       url: postUser,
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ name, phone, password, cccd, address }),
+      data: JSON.stringify({ name, phoneNumber, password, cccd, address }),
       success: function (response) {
         console.log(response);
         alert("Đăng ký thành công!");

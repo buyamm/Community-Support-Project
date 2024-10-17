@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080";
+const URL = "https://community-support-project.onrender.com";
 
 // =============== USER ====================
 export const getUsers = URL + "/api/users"; // Get all users
@@ -7,4 +7,3 @@ export const postUser = URL + "/api/users"; // Post a user
 
 // =============== AUTH ====================
 export const login = URL + "/api/auth/login"; // Login
-
