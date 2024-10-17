@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\CNPM_Community_support.Blazor.Server.props" />
-</Project>
