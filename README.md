@@ -7,6 +7,7 @@
 
 # Our app deployment version:
 > _version0-scrum4: deploy without FORM entity_
+> _version1-scrum4: deploy with USER, ORGANIZATION, FORM entity (the main features in SCRUM sprint 4)_
 
 # Notes:
 
