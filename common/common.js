@@ -7,3 +7,6 @@ export const postUser = URL + "/api/users"; // Post a user
 
 // =============== AUTH ====================
 export const login = URL + "/api/auth/login"; // Login
+
+// =================== URL index =======================
+export const URLIndex = "./index.html";

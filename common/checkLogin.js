@@ -12,5 +12,6 @@ function logout() {
 $(document).ready(function () {
   if (login() != null) {
     $(".icon_user").css("display", "inline");
+    $(".btn-sign-in").css("display", "none");
   }
 });

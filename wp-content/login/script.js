@@ -1,4 +1,4 @@
-import { postUser, login } from "../../common/common.js";
+import { postUser, login, URLIndex } from "../../common/common.js";
 
 $(document).ready(function () {
   //============= Phone ===============
@@ -85,7 +85,7 @@ $(document).ready(function () {
       data: JSON.stringify({ name, phoneNumber, password, cccd, address }),
       success: function (response) {
         console.log(response);
-        alert("Đăng ký thành công!");
+        alert("Đăng ký thành công!, vui lòng đăng nhập.");
       },
       error: function (error) {
         console.log(error);
@@ -107,6 +107,8 @@ $(document).ready(function () {
       contentType: "application/json",
       data: JSON.stringify({ phoneNumber, password, whoAreYou }),
       success: function (response) {
+        localStorage.setItem("phoneNumber", phoneNumber);
+
         const data = response.result;
 
         console.log(JSON.stringify(data, null, 2));
@@ -115,10 +117,8 @@ $(document).ready(function () {
         //     console.log(`${key}: ${JSON.stringify(response[key])}`);
         //   }
         // }
-
-        window.location.href = "http://127.0.0.1:5544/index.html";
-        localStorage.setItem("phoneNumber", phoneNumber);
         alert("Đăng nhập thành công!");
+        window.location.href = URLIndex;
       },
       error: function (error) {
         console.log(error);
