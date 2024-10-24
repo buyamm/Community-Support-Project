@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/files")
 @CrossOrigin
+@RequestMapping("/api/files")
 public class FileController {
 
     private final FileService fileService;
