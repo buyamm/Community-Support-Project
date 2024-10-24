@@ -1,5 +1,6 @@
 package com.project.community_support.service;
 
+import com.project.community_support.constant.PredefineRole;
 import com.project.community_support.dto.request.OrganizationCreationRequest;
 import com.project.community_support.dto.request.OrganizationUpdateRequest;
 import com.project.community_support.dto.response.OrganizationResponse;
@@ -34,6 +35,7 @@ public class OrganizationService {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         Organization organization = organizationMapper.toOrganization(request);
         organization.setPassword(passwordEncoder.encode(request.getPassword()));
+        organization.setRoleName(PredefineRole.ADMIN_ROLE);
 
         return organizationMapper.toOrganizationResponse(organizationRepository.save(organization));
     }

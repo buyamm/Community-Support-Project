@@ -22,6 +22,7 @@ public class Organization {
     private String cccd;
     private String address;
     private String description;
+    private String roleName;
 
     @OneToMany(mappedBy = "organization")
     private Set<Form> forms;

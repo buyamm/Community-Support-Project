@@ -21,6 +21,7 @@ public class User {
     private String fullName;
     private String cccd;
     private String address;
+    private String roleName;
 
     @OneToMany(mappedBy = "user")
     private Set<Form> forms;

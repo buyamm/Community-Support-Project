@@ -1,5 +1,6 @@
 package com.project.community_support.service;
 
+import com.project.community_support.constant.PredefineRole;
 import com.project.community_support.dto.request.UserCreationRequest;
 import com.project.community_support.dto.request.UserUpdateRequest;
 import com.project.community_support.dto.response.UserResponse;
@@ -35,6 +36,7 @@ public class UserService {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         User user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRoleName(PredefineRole.USER_ROLE);
 
         return userMapper.toUserResponse(userRepository.save(user));
     }
