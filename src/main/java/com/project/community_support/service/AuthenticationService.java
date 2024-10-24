@@ -1,5 +1,6 @@
 package com.project.community_support.service;
 
+import com.project.community_support.constant.PredefineRole;
 import com.project.community_support.dto.request.AuthenticationRequest;
 import com.project.community_support.dto.response.AuthenticationResponse;
 import com.project.community_support.dto.response.OrganizationResponse;
@@ -31,7 +32,7 @@ public class AuthenticationService {
         boolean authenticated;
 
         switch (request.getWhoAreYou()) {
-            case "organization":
+            case PredefineRole.ADMIN_ROLE:
                 var organization = organizationRepository.findByPhoneNumber(request.getPhoneNumber())
                         .orElseThrow(
                             () -> new AppException(ErrorCode.USER_NOT_FOUND)
@@ -46,7 +47,7 @@ public class AuthenticationService {
                             .build();
                 }
                 break;
-            case "user":
+            case PredefineRole.USER_ROLE:
                 var user = userRepository.findByPhoneNumber(request.getPhoneNumber())
                         .orElseThrow(
                                 () -> new AppException(ErrorCode.USER_NOT_FOUND)
