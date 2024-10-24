@@ -11,6 +11,8 @@ import com.project.community_support.repository.FormRepository;
 import com.project.community_support.repository.ImageRepository;
 import com.project.community_support.repository.OrganizationRepository;
 import com.project.community_support.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,8 @@ import java.util.Map;
 
 @Service
 public class FormService {
+
+    private final Logger logger = LoggerFactory.getLogger(FormService.class);
 
     private final FormRepository formRepository;
     private final ImageRepository imageRepository;
@@ -139,6 +143,42 @@ public class FormService {
                     )
                     .build();
         }).toList();
+    }
+
+    public FormResponse assignOrganization(String formId, String organizationId) {
+        Form form = formRepository.findById(formId).orElseThrow(
+                () -> new AppException(ErrorCode.FORM_NOT_FOUND)
+        );
+        logger.info(organizationId);
+        if (form.getOrganization() == null) {
+            form.setOrganization(organizationRepository.findById(organizationId).orElseThrow(
+                    () -> new AppException(ErrorCode.ORGANIZATION_NOT_FOUND)
+            ));
+            formRepository.save(form);
+        }
+
+        return FormResponse.builder()
+                .address(form.getAddress())
+                .description(form.getDescription())
+                .isTemp(form.isTemp())
+                .phoneNumber(form.getPhoneNumber())
+                .target(form.getTarget())
+                .deadline(form.getDeadline())
+                .dateOfApplication(form.getDateOfApplication())
+                .images(imageRepository.findAllByFormId(formId).stream().map(Images::getPath).toList())
+                .organization(
+                        Map.of(
+                                "id", form.getOrganization().getId(),
+                                "name", form.getOrganization().getOrganizationName()
+                        )
+                )
+                .user(
+                        Map.of(
+                                "id", form.getUser().getId(),
+                                "name", form.getUser().getFullName()
+                        )
+                )
+                .build();
     }
 
 

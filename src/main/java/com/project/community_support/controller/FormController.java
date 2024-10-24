@@ -43,4 +43,14 @@ public class FormController {
                 .result(formService.getFormById(formId))
                 .build();
     }
+
+    @PostMapping("/{formId}/organization/{organizationId}")
+    public ApiResponse<FormResponse> assignOrganization(
+            @PathVariable String formId,
+            @PathVariable String organizationId
+    ) {
+        return ApiResponse.<FormResponse>builder()
+                .result(formService.assignOrganization(formId, organizationId))
+                .build();
+    }
 }
