@@ -1,8 +1,41 @@
-import { postUser, login, URLIndex } from "../../common/common.js";
+import { postUser, login, URLIndex, postORG } from "../../common/common.js";
 
 $(document).ready(function () {
+  // =============== Change view =====================
+  // Chuyển sang form đăng nhập
+  $("#switch-to-login, #signIn").click(function () {
+    $(".sign-in-container").css("left", "0");
+    $(".sign-up-container").css("left", "100%");
+    $(".overlay-container").removeClass("active");
+  });
+
+  // Chuyển sang form đăng ký người dùng
+  $("#switch-to-register, #switch-to-user").click(function () {
+    $("#register-organization").css("opacity", "0");
+    $(".sign-up-container").removeClass("hidden");
+    $(".sign-in-container").css("left", "-100%");
+    $("#register-user").css("opacity", "1");
+    $(".sign-up-container").css("left", "0");
+    $(".overlay-container").addClass("active");
+  });
+
+  // Chuyển sang form đăng ký tổ chức
+  $("#switch-to-org").click(function () {
+    $("#register-organization").css("opacity", "1");
+    $(".sign-in-container").css("left", "-100%");
+    $("#register-user").css("opacity", "0");
+    $(".sign-up-container").css("left", "0");
+    $(".overlay-container").addClass("active");
+  });
+
+  // Quay lại đăng ký người dùng từ đăng ký tổ chức
+  $("#switch-back-to-user").click(function () {
+    $("#register-organization").css("opacity", "0");
+    $("#register-user").css("opacity", "1");
+  });
+
   //============= Phone ===============
-  const phoneInput = document.getElementById("register-phone");
+  const phoneInput = document.getElementById("user-phone");
 
   phoneInput.addEventListener("input", () => {
     let phone = phoneInput.value;
@@ -16,7 +49,7 @@ $(document).ready(function () {
   });
 
   // ================= CCCD ==============
-  const cccdInput = document.getElementById("register-cccd");
+  const cccdInput = document.getElementById("user-cccd");
 
   cccdInput.addEventListener("input", () => {
     const cccd = cccdInput.value;
@@ -30,7 +63,7 @@ $(document).ready(function () {
   });
 
   // ===============  password ======================
-  const passwordInput = document.getElementById("register-password");
+  const passwordInput = document.getElementById("user-password");
 
   passwordInput.addEventListener("input", () => {
     const password = passwordInput.value;
@@ -46,19 +79,7 @@ $(document).ready(function () {
     }
   });
 
-  // =============== Change view =====================
-
-  $("#signUp").click(function () {
-    $(".sign-in-container").css("left", "-100%");
-    $(".sign-up-container").css("left", "0");
-  });
-
-  $("#signIn").click(function () {
-    $(".sign-in-container").css("left", "0");
-    $(".sign-up-container").css("left", "-100%");
-  });
-
-  //===============  Register ===============
+  //===============  Register USER===============
 
   /*
   "phoneNumber": "0374798126",
@@ -68,13 +89,13 @@ $(document).ready(function () {
   "address": "Quảng Trị"
 */
 
-  $("#register-form").submit(function (e) {
+  $("#register-user-form").submit(function (e) {
     e.preventDefault();
-    const name = $("#register-name").val();
-    const phoneNumber = $("#register-phone").val();
-    const password = $("#register-password").val();
-    const cccd = $("#register-cccd").val();
-    const address = $("#register-address").val();
+    const name = $("#user-name").val();
+    const phoneNumber = $("#user-phone").val();
+    const password = $("#user-password").val();
+    const cccd = $("#user-cccd").val();
+    const address = $("#user-address").val();
 
     console.log(name, phoneNumber, password, cccd, address);
 
@@ -99,8 +120,14 @@ $(document).ready(function () {
     e.preventDefault();
     const phoneNumber = $("#login-phone").val();
     const password = $("#login-password").val();
-    const whoAreYou = "user";
 
+    const whoAreYou = $('input[name="login-role"]:checked').val();
+
+    if (!whoAreYou) {
+      alert("Vui lòng chọn vai trò đăng nhập!");
+    } else {
+      console.log(`Đăng nhập với vai trò: ${whoAreYou}`);
+    }
     $.ajax({
       url: login,
       type: "POST",
@@ -126,5 +153,75 @@ $(document).ready(function () {
         alert("Sai thông tin đăng nhập!");
       },
     });
+  });
+});
+
+//===============  Register ORG===============
+
+// {
+//   "phoneNumber": "",
+//   "password": "",
+//   "organizationName": "",
+//   "representativeName": "",
+//   "cccd": "",
+//   "address": "",
+//   "description": ""
+// }
+
+$("#register-organization-form").submit(function (e) {
+  e.preventDefault();
+  const phoneNumber = $("#org-phone").val();
+  const password = $("#org-password").val();
+  const organizationName = $("#org-representation_name").val();
+  const representativeName = $("#org-name").val();
+  const cccd = $("#org-cccd").val();
+  const address = $("#org-address").val();
+  const description = $("#org-description").val();
+
+  console.log(
+    phoneNumber,
+    password,
+    organizationName,
+    representativeName,
+    cccd,
+    address,
+    description
+  );
+
+  $.ajax({
+    url: postORG,
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({
+      phoneNumber,
+      password,
+      organizationName,
+      representativeName,
+      cccd,
+      address,
+      description,
+    }),
+    success: function (response) {
+      console.log(response);
+      alert("Đăng ký thành công!, vui lòng đăng nhập.");
+      $("#org-phone").val("");
+      $("#org-password").val("");
+      $("#org-representation_name").val("");
+      $("#org-name").val("");
+      $("#org-cccd").val("");
+      $("#org-address").val("");
+      $("#org-description").val("");
+    },
+    error: function (error) {
+      console.log(error);
+      alert("Có lỗi xảy ra khi đăng ký!");
+      $("#org-phone").val("");
+      $("#org-password").val("");
+      $("#org-representation_name").val("");
+      $("#org-name").val("");
+      $("#org-cccd").val("");
+      $("#org-address").val("");
+      $("#org-description").val("");
+    },
   });
 });

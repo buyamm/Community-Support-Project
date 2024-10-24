@@ -13,29 +13,72 @@
 <body>
     <div class="container">
 
+        <!-- Form Đăng Nhập -->
         <div class="form-container sign-in-container">
             <form id="login-form">
                 <h1>Đăng nhập</h1>
                 <input autocomplete="tel" type="tel" id="login-phone" placeholder="Số điện thoại" required />
                 <input type="password" id="login-password" placeholder="Mật khẩu" required />
+
+                <div class="role-selection">
+                    <label>
+                        <input type="radio" name="login-role" value="user" required />
+                        Người dùng
+                    </label>
+                    <label>
+                        <input type="radio" name="login-role" value="organization" required />
+                        Tổ chức
+                    </label>
+                </div>
+
                 <button type="submit">Đăng nhập</button>
+                <button class="switch-button" id="switch-to-register">Chưa có tài khoản? Đăng ký</button>
             </form>
         </div>
 
-        <div class="form-container sign-up-container">
-            <form id="register-form">
-                <h1>Đăng ký</h1>
-                <input autocomplete="name" type="text" id="register-name" placeholder="Họ và tên" required />
-                <input autocomplete="tel" type="tel" id="register-phone" placeholder="Số điện thoại" required />
-                <input autocomplete="new-password" type="password" id="register-password" placeholder="Mật khẩu"
-                    required />
-                <input type="number" id="register-cccd" placeholder="CCCD" required />
-                <input autocomplete="street-address" type="text" id="register-address" placeholder="Địa chỉ" required />
+        <!-- Form Đăng Ký Người Dùng -->
+        <div class="form-container sign-up-container" id="register-user">
+            <form id="register-user-form">
+                <h1>Đăng ký Người dùng</h1>
+                <input autocomplete="name" type="text" id="user-name" placeholder="Họ và tên" required />
+                <input autocomplete="tel" type="tel" id="user-phone" placeholder="Số điện thoại" required />
+                <input autocomplete="new-password" type="password" id="user-password" placeholder="Mật khẩu" required />
+                <input type="number" id="user-cccd" placeholder="CCCD" required />
+                <input autocomplete="street-address" type="text" id="user-address" placeholder="Địa chỉ" required />
+                <button type="submit">Đăng ký</button>
+                <button class="switch-button" id="switch-to-login">Đã có tài khoản? Đăng nhập</button>
+            </form>
+        </div>
+
+        <!-- Form Đăng Ký Tổ Chức -->
+        <div class="form-container sign-up-container hidden" id="register-organization">
+            <form id="register-organization-form">
+                <h1>Đăng ký Tổ chức</h1>
+
+                <div class="form-group">
+                    <input type="text" id="org-representation_name" placeholder="Tên người đại diện" required />
+                    <input type="number" id="org-cccd" placeholder="CCCD người đại diện" required />
+
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="org-phone" placeholder="Số điện thoại" required />
+                    <input autocomplete="new-password" type="password" id="org-password" placeholder="Mật khẩu"
+                        required />
+                </div>
+
+                <input type="text" id="org-name" placeholder="Tên tổ chức" required />
+
+                <input type="text" id="org-address" placeholder="Địa chỉ tổ chức" required />
+
+                <textarea id="org-description" placeholder="Mô tả thêm về tổ chức của bạn..." rows="4"></textarea>
 
                 <button type="submit">Đăng ký</button>
+                <button class="switch-button" id="switch-back-to-user">Quay lại Người dùng</button>
             </form>
         </div>
 
+        <!-- Overlay -->
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
@@ -45,8 +88,9 @@
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Xin chào!</h1>
-                    <p>Đăng ký tài khoản để khám phá thêm</p>
-                    <button class="switch-button" id="signUp">Đăng ký</button>
+                    <p>Chọn vai trò của bạn và đăng ký</p>
+                    <button class="switch-button" id="switch-to-user">Đăng ký Người dùng</button>
+                    <button class="switch-button" id="switch-to-org">Đăng ký Tổ chức</button>
                 </div>
             </div>
         </div>
