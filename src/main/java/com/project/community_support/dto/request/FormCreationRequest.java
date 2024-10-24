@@ -16,7 +16,7 @@ public class FormCreationRequest {
     private String description;
     private Long target;
     private Instant deadline;
-    private String organizationId;
+//    private String organizationId;
     private String userId;
     boolean isTemp;
     private List<String> images;

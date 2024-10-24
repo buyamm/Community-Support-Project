@@ -4,7 +4,6 @@ import com.project.community_support.dto.request.FormCreationRequest;
 import com.project.community_support.dto.response.FormResponse;
 import com.project.community_support.entity.Form;
 import com.project.community_support.entity.Images;
-import com.project.community_support.entity.Organization;
 import com.project.community_support.entity.User;
 import com.project.community_support.exception.AppException;
 import com.project.community_support.exception.ErrorCode;
@@ -38,16 +37,16 @@ public class FormService {
         User user = userRepository.findById(request.getUserId()).orElseThrow(
                 () -> new AppException(ErrorCode.USER_NOT_FOUND)
         );
-        Organization organization = organizationRepository.findById(request.getOrganizationId()).orElseThrow(
-                () -> new AppException(ErrorCode.ORGANIZATION_NOT_FOUND)
-        );
+//        Organization organization = organizationRepository.findById(request.getOrganizationId()).orElseThrow(
+//                () -> new AppException(ErrorCode.ORGANIZATION_NOT_FOUND)
+//        );
         form.setAddress(request.getAddress());
         form.setDescription(request.getDescription());
         form.setPhoneNumber(request.getPhoneNumber());
         form.setDeadline(request.getDeadline());
         form.setTarget(request.getTarget());
         form.setUser(user);
-        form.setOrganization(organization);
+//        form.setOrganization(organization);
         form.setTemp(request.isTemp());
         formRepository.save(form);
 
@@ -68,12 +67,12 @@ public class FormService {
                 .deadline(form.getDeadline())
                 .dateOfApplication(form.getDateOfApplication())
                 .images(request.getImages())
-                .organization(
-                        Map.of(
-                                "id", organization.getId(),
-                                "name", organization.getOrganizationName()
-                        )
-                )
+//                .organization(
+//                        Map.of(
+//                                "id", organization.getId(),
+//                                "name", organization.getOrganizationName()
+//                        )
+//                )
                 .user(
                         Map.of(
                                 "id", user.getId(),
@@ -99,10 +98,11 @@ public class FormService {
                 .dateOfApplication(form.getDateOfApplication())
                 .images(imageRepository.findAllByFormId(formId).stream().map(Images::getPath).toList())
                 .organization(
-                        Map.of(
-                                "id", form.getOrganization().getId(),
-                                "name", form.getOrganization().getOrganizationName()
-                        )
+                        form.getOrganization() != null ?
+                                Map.of(
+                                        "id", form.getOrganization().getId(),
+                                        "name", form.getOrganization().getOrganizationName()
+                                ) : null
                 )
                 .user(
                         Map.of(
@@ -113,7 +113,7 @@ public class FormService {
                 .build();
     }
 
-    public List<FormResponse> getAllForms(){
+    public List<FormResponse> getAllForms() {
         return formRepository.findAll().stream().map(form -> {
             return FormResponse.builder()
                     .address(form.getAddress())
@@ -125,10 +125,11 @@ public class FormService {
                     .dateOfApplication(form.getDateOfApplication())
                     .images(imageRepository.findAllByFormId(form.getId()).stream().map(Images::getPath).toList())
                     .organization(
-                            Map.of(
-                                    "id", form.getOrganization().getId(),
-                                    "name", form.getOrganization().getOrganizationName()
-                            )
+                            form.getOrganization() != null ?
+                                    Map.of(
+                                            "id", form.getOrganization().getId(),
+                                            "name", form.getOrganization().getOrganizationName()
+                                    ) : null
                     )
                     .user(
                             Map.of(
