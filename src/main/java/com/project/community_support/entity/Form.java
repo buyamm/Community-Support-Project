@@ -19,6 +19,7 @@ public class Form {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    private String fullName;
     private String phoneNumber;
     private String address;
     private String description;
