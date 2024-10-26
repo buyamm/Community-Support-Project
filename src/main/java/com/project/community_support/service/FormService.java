@@ -45,6 +45,7 @@ public class FormService {
 //                () -> new AppException(ErrorCode.ORGANIZATION_NOT_FOUND)
 //        );
 
+
         form.setFullName(request.getFullName());
         form.setAddress(request.getAddress());
         form.setDescription(request.getDescription());
@@ -65,6 +66,7 @@ public class FormService {
 
         new FormResponse();
         return FormResponse.builder()
+                .id(form.getId())
                 .fullName(form.getFullName())
                 .address(form.getAddress())
                 .description(form.getDescription())
@@ -96,6 +98,7 @@ public class FormService {
         );
 
         return FormResponse.builder()
+                .id(form.getId())
                 .fullName(form.getFullName())
                 .address(form.getAddress())
                 .description(form.getDescription())
@@ -124,6 +127,7 @@ public class FormService {
     public List<FormResponse> getAllForms() {
         return formRepository.findAll().stream().map(form -> {
             return FormResponse.builder()
+                    .id(form.getId())
                     .fullName(form.getFullName())
                     .address(form.getAddress())
                     .description(form.getDescription())
@@ -163,6 +167,7 @@ public class FormService {
         }
 
         return FormResponse.builder()
+                .id(form.getId())
                 .address(form.getAddress())
                 .description(form.getDescription())
                 .isTemp(form.isTemp())
