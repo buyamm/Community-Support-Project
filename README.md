@@ -61,6 +61,25 @@
 > ![image](https://github.com/user-attachments/assets/56154351-f327-40a9-b125-42516e545baf)
 
 **_3. Form endpoints:_**
+- [/api/forms](#/api/forms) -> **_GET: return all Forms**
+> **_Output_**
+> 
+> ![alt text](image-2.png)
+
+- [/api/forms](#/api/forms) -> **_POST: create new Form - response same like get Form's information. The organization initial is null**
+> **_Output_**
+> 
+> ![alt text](image-3.png)
+
+- [/api/forms/{formId}](#/api/forms) -> **_GET: return form's information (need id)_**
+> **_Output_**
+> 
+> ![alt text](image.png)
+
+- [/api/forms/{userId}/organization/{organizationId}](#/api/forms) -> **_POST_: Organize registration form (need id about form and organization) - repsonse same like get form's infomation with organization's information**
+
+> 
+> ![alt text](image-1.png)
 
 **_4. Organization endpoints:_**
 

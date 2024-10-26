@@ -168,6 +168,7 @@ public class FormService {
 
         return FormResponse.builder()
                 .id(form.getId())
+                .fullName(form.getFullName())
                 .address(form.getAddress())
                 .description(form.getDescription())
                 .isTemp(form.isTemp())
