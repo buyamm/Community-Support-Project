@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("api/organization")
+@CrossOrigin
 public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
