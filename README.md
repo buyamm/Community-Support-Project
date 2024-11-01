@@ -67,6 +67,8 @@
 > ![alt text](image-2.png)
 
 - [/api/forms](#/api/forms) -> **_POST: create new Form - response same like get Form's information. The organization initial is null**
+> **_Input_ data (we just only accept if have fullName, phoneNumber, description, target, userId)**
+> ![alt text](image-4.png)
 > **_Output_**
 > 
 > ![alt text](image-3.png)
