@@ -39,4 +39,7 @@ public class Form {
 
     @OneToMany(mappedBy = "form")
     private Set<Images> images;
+
+    @OneToMany(mappedBy = "form")
+    private Set<Contribution> contributions;
 }

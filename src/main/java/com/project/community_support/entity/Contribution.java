@@ -23,4 +23,8 @@ public class Contribution {
 
     @OneToMany(mappedBy = "contribution")
     private Set<Images> images;
+
+    @ManyToOne
+    @JoinColumn(name = "form_id")
+    private Form form;
 }
