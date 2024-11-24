@@ -1,5 +1,6 @@
 package com.project.community_support.dto.request;
 
+import com.project.community_support.entity.BankAccount;
 import lombok.*;
 
 import java.time.Instant;
@@ -19,6 +20,8 @@ public class FormCreationRequest {
     private Instant deadline;
 //    private String organizationId;
     private String userId;
-    boolean isTemp;
+    private boolean isTemp;
+    private boolean isDone;
+//    private BankAccount bankAccount;
     private List<String> images;
 }

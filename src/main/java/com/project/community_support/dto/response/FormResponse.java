@@ -1,5 +1,6 @@
 package com.project.community_support.dto.response;
 
+import com.project.community_support.entity.BankAccount;
 import lombok.*;
 
 import java.time.Instant;
@@ -25,6 +26,8 @@ public class FormResponse {
     private Map<String, Object> organization = new HashMap<>();
     private Map<String, Object> user = new HashMap<>();
     private boolean isTemp;
+    private boolean isDone;
+    private BankAccountResponse bankAccount;
     private List<String> images;
 }
 

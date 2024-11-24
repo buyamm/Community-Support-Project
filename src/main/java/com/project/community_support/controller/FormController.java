@@ -1,9 +1,11 @@
 package com.project.community_support.controller;
 
 
+import com.project.community_support.dto.request.BankAccountRequest;
 import com.project.community_support.dto.request.FormCreationRequest;
 import com.project.community_support.dto.response.ApiResponse;
 import com.project.community_support.dto.response.FormResponse;
+import com.project.community_support.entity.BankAccount;
 import com.project.community_support.service.FormService;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,10 +49,12 @@ public class FormController {
     @PostMapping("/{formId}/organization/{organizationId}")
     public ApiResponse<FormResponse> assignOrganization(
             @PathVariable String formId,
-            @PathVariable String organizationId
-    ) {
+            @PathVariable String organizationId,
+            @RequestBody BankAccountRequest bankAccountRequest
+
+            ) {
         return ApiResponse.<FormResponse>builder()
-                .result(formService.assignOrganization(formId, organizationId))
+                .result(formService.assignOrganization(formId, organizationId, bankAccountRequest))
                 .build();
     }
 }

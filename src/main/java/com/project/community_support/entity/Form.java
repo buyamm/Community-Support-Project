@@ -4,6 +4,7 @@ package com.project.community_support.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -27,7 +28,12 @@ public class Form {
     private Instant deadline;
     @CreationTimestamp
     private Instant dateOfApplication;
+//    private String accountHolder;
+//    private String accountNumber;
+//    private String bankName;
+//    private String transferContent;
     private boolean isTemp;
+    private boolean isDone;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -39,4 +45,8 @@ public class Form {
 
     @OneToMany(mappedBy = "form")
     private Set<Images> images;
+
+    @OneToOne
+    @JoinColumn(name = "bankAccount_id")
+    private BankAccount bankAccount;
 }

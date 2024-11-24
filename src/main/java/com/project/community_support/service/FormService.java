@@ -1,16 +1,16 @@
 package com.project.community_support.service;
 
+import com.project.community_support.dto.request.BankAccountRequest;
 import com.project.community_support.dto.request.FormCreationRequest;
 import com.project.community_support.dto.response.FormResponse;
+import com.project.community_support.entity.BankAccount;
 import com.project.community_support.entity.Form;
 import com.project.community_support.entity.Images;
 import com.project.community_support.entity.User;
 import com.project.community_support.exception.AppException;
 import com.project.community_support.exception.ErrorCode;
-import com.project.community_support.repository.FormRepository;
-import com.project.community_support.repository.ImageRepository;
-import com.project.community_support.repository.OrganizationRepository;
-import com.project.community_support.repository.UserRepository;
+import com.project.community_support.mapper.BankAccountMapper;
+import com.project.community_support.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -27,13 +27,18 @@ public class FormService {
     private final ImageRepository imageRepository;
     private final UserRepository userRepository;
     private final OrganizationRepository organizationRepository;
+    private final BankAccountRepository bankAccountRepository;
+    private final BankAccountMapper bankAccountMapper;
 
     public FormService(FormRepository formRepository, ImageRepository imageRepository,
-                       UserRepository userRepository, OrganizationRepository organizationRepository) {
+                       UserRepository userRepository, OrganizationRepository organizationRepository, BankAccountRepository bankAccountRepository,
+                       BankAccountMapper bankAccountMapper) {
         this.formRepository = formRepository;
         this.imageRepository = imageRepository;
         this.userRepository = userRepository;
         this.organizationRepository = organizationRepository;
+        this.bankAccountRepository = bankAccountRepository;
+        this.bankAccountMapper = bankAccountMapper;
     }
 
     public FormResponse createForm(FormCreationRequest request) {
@@ -55,6 +60,7 @@ public class FormService {
         form.setUser(user);
 //        form.setOrganization(organization);
         form.setTemp(request.isTemp());
+        form.setDone(request.isDone());
         formRepository.save(form);
 
         request.getImages().forEach(i -> {
@@ -71,6 +77,7 @@ public class FormService {
                 .address(form.getAddress())
                 .description(form.getDescription())
                 .isTemp(form.isTemp())
+                .isDone(form.isDone())
                 .phoneNumber(form.getPhoneNumber())
                 .target(form.getTarget())
                 .deadline(form.getDeadline())
@@ -103,6 +110,7 @@ public class FormService {
                 .address(form.getAddress())
                 .description(form.getDescription())
                 .isTemp(form.isTemp())
+                .isDone(form.isDone())
                 .phoneNumber(form.getPhoneNumber())
                 .target(form.getTarget())
                 .deadline(form.getDeadline())
@@ -132,6 +140,7 @@ public class FormService {
                     .address(form.getAddress())
                     .description(form.getDescription())
                     .isTemp(form.isTemp())
+                    .isDone(form.isDone())
                     .phoneNumber(form.getPhoneNumber())
                     .target(form.getTarget())
                     .deadline(form.getDeadline())
@@ -154,7 +163,7 @@ public class FormService {
         }).toList();
     }
 
-    public FormResponse assignOrganization(String formId, String organizationId) {
+    public FormResponse assignOrganization(String formId, String organizationId, BankAccountRequest bankAccountRequest) {
         Form form = formRepository.findById(formId).orElseThrow(
                 () -> new AppException(ErrorCode.FORM_NOT_FOUND)
         );
@@ -163,8 +172,17 @@ public class FormService {
             form.setOrganization(organizationRepository.findById(organizationId).orElseThrow(
                     () -> new AppException(ErrorCode.ORGANIZATION_NOT_FOUND)
             ));
-            formRepository.save(form);
         }
+
+        if (form.getBankAccount() == null){
+            BankAccount bankAccount = bankAccountMapper.toBankAccount(bankAccountRequest);
+            bankAccount.setForm(form);
+            form.setBankAccount(bankAccountRepository.save(bankAccount));
+
+        }
+
+        formRepository.save(form);
+
 
         return FormResponse.builder()
                 .id(form.getId())
@@ -172,6 +190,7 @@ public class FormService {
                 .address(form.getAddress())
                 .description(form.getDescription())
                 .isTemp(form.isTemp())
+                .isDone(form.isDone())
                 .phoneNumber(form.getPhoneNumber())
                 .target(form.getTarget())
                 .deadline(form.getDeadline())
@@ -189,6 +208,7 @@ public class FormService {
                                 "name", form.getUser().getFullName()
                         )
                 )
+                .bankAccount(bankAccountMapper.toBankAccountResponse(form.getBankAccount()))
                 .build();
     }
 }
