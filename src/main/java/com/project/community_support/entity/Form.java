@@ -51,6 +51,10 @@ public class Form {
     @JoinColumn(name = "bankAccount_id")
     private BankAccount bankAccount;
 
+    @OneToOne
+    @JoinColumn(name = "spending_id")
+    private Spending spending;
+
     @OneToMany(mappedBy = "form")
     private Set<Contribution> contributions;
 

@@ -25,6 +25,7 @@ public class FormResponse {
     private boolean isTemp;
     private boolean isDone;
     private BankAccountResponse bankAccount;
+    private SpendingResponse spendingResponse;
     private Set<ContributionResponse> contributionResponses;
     private List<String> images;
 }

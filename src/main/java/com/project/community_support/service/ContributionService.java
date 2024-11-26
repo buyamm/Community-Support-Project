@@ -87,7 +87,8 @@ public class ContributionService {
                             .form(
                                     Map.of(
                                             "id", contribution.getForm().getId(),
-                                            "name", contribution.getForm().getFullName()
+                                            "name", contribution.getForm().getFullName(),
+                                            "done", contribution.getForm().isDone()
                                     )
                             )
                             .userResponse(userMapper.toUserResponse(contribution.getUser()))

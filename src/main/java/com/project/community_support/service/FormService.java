@@ -1,15 +1,16 @@
 package com.project.community_support.service;
 
+import com.fasterxml.classmate.AnnotationOverrides;
 import com.project.community_support.dto.request.BankAccountRequest;
 import com.project.community_support.dto.request.FormCreationRequest;
+import com.project.community_support.dto.request.SpendingRequest;
 import com.project.community_support.dto.response.FormResponse;
-import com.project.community_support.entity.BankAccount;
-import com.project.community_support.entity.Form;
-import com.project.community_support.entity.Images;
-import com.project.community_support.entity.User;
+import com.project.community_support.dto.response.SpendingResponse;
+import com.project.community_support.entity.*;
 import com.project.community_support.exception.AppException;
 import com.project.community_support.exception.ErrorCode;
 import com.project.community_support.mapper.BankAccountMapper;
+import com.project.community_support.mapper.SpendingMapper;
 import com.project.community_support.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,16 +30,20 @@ public class FormService {
     private final OrganizationRepository organizationRepository;
     private final BankAccountRepository bankAccountRepository;
     private final BankAccountMapper bankAccountMapper;
+    private final SpendingRepository spendingRepository;
+    private final SpendingMapper spendingMapper;
 
     public FormService(FormRepository formRepository, ImageRepository imageRepository,
                        UserRepository userRepository, OrganizationRepository organizationRepository, BankAccountRepository bankAccountRepository,
-                       BankAccountMapper bankAccountMapper) {
+                       BankAccountMapper bankAccountMapper, SpendingRepository spendingRepository, SpendingMapper spendingMapper) {
         this.formRepository = formRepository;
         this.imageRepository = imageRepository;
         this.userRepository = userRepository;
         this.organizationRepository = organizationRepository;
         this.bankAccountRepository = bankAccountRepository;
         this.bankAccountMapper = bankAccountMapper;
+        this.spendingRepository = spendingRepository;
+        this.spendingMapper = spendingMapper;
     }
 
     public FormResponse createForm(FormCreationRequest request) {
@@ -129,6 +134,7 @@ public class FormService {
                         )
                 )
                 .bankAccount(bankAccountMapper.toBankAccountResponse(form.getBankAccount()))
+                .spendingResponse(spendingMapper.toSpendingResponse(form.getSpending()))
                 .build();
     }
 
@@ -209,6 +215,100 @@ public class FormService {
                         )
                 )
                 .bankAccount(bankAccountMapper.toBankAccountResponse(form.getBankAccount()))
+                .build();
+    }
+
+    public List<FormResponse> getFormByOrganizationId(String organizationId) {
+        List<Form> formList = formRepository.findByOrganizationId(organizationId);
+
+        return formList.stream().map(form -> {
+            return FormResponse.builder()
+                    .id(form.getId())
+                    .fullName(form.getFullName())
+                    .address(form.getAddress())
+                    .description(form.getDescription())
+                    .isTemp(form.isTemp())
+                    .isDone(form.isDone())
+                    .phoneNumber(form.getPhoneNumber())
+                    .target(form.getTarget())
+                    .deadline(form.getDeadline())
+                    .dateOfApplication(form.getDateOfApplication())
+                    .images(imageRepository.findAllByFormId(form.getId()).stream().map(Images::getPath).toList())
+                    .organization(
+                            form.getOrganization() != null ?
+                                    Map.of(
+                                            "id", form.getOrganization().getId(),
+                                            "name", form.getOrganization().getOrganizationName()
+                                    ) : null
+                    )
+                    .user(
+                            Map.of(
+                                    "id", form.getUser().getId(),
+                                    "name", form.getUser().getFullName()
+                            )
+                    )
+                    .build();
+        }).toList();
+
+    }
+
+    public FormResponse spending(String formId, SpendingRequest spendingRequest) {
+        Form form = formRepository.findById(formId).orElseThrow(
+                () -> new AppException(ErrorCode.FORM_NOT_FOUND)
+        );
+
+
+        if (form.getSpending() == null){
+            Spending spending = spendingMapper.toSpending(spendingRequest);
+            spending.setForm(form);
+            form.setSpending(spendingRepository.save(spending));
+        }
+        form.setDone(true);
+        formRepository.save(form);
+
+
+        return FormResponse.builder()
+                .id(form.getId())
+                .fullName(form.getFullName())
+                .address(form.getAddress())
+                .description(form.getDescription())
+                .isTemp(form.isTemp())
+                .isDone(form.isDone())
+                .phoneNumber(form.getPhoneNumber())
+                .target(form.getTarget())
+                .deadline(form.getDeadline())
+                .dateOfApplication(form.getDateOfApplication())
+                .images(imageRepository.findAllByFormId(formId).stream().map(Images::getPath).toList())
+                .organization(
+                        Map.of(
+                                "id", form.getOrganization().getId(),
+                                "name", form.getOrganization().getOrganizationName()
+                        )
+                )
+                .user(
+                        Map.of(
+                                "id", form.getUser().getId(),
+                                "name", form.getUser().getFullName()
+                        )
+                )
+                .bankAccount(bankAccountMapper.toBankAccountResponse(form.getBankAccount()))
+                .spendingResponse(spendingMapper.toSpendingResponse(form.getSpending()))
+                .build();
+    }
+
+
+    public SpendingResponse getSpending(String formId) {
+        Spending spending = spendingRepository.findByFormId(formId);
+        Form form = spending.getForm();
+
+        return SpendingResponse.builder()
+                .amount(spending.getAmount())
+                .content(spending.getContent())
+                .date(spending.getDate())
+                .form(Map.of(
+                        "id", form.getId(),
+                        "name", form.getFullName()
+                ))
                 .build();
     }
 }
