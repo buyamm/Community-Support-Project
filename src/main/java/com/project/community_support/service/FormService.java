@@ -129,6 +129,7 @@ public class FormService {
                                 "name", form.getUser().getFullName()
                         )
                 )
+                .bankAccount(bankAccountMapper.toBankAccountResponse(form.getBankAccount()))
                 .build();
     }
 
