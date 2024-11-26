@@ -19,7 +19,7 @@ public class Images {
     @JoinColumn(name = "form_id")
     private Form form;
 
-    @ManyToOne
-    @JoinColumn(name = "contribution_id")
-    private Contribution contribution;
+//    @ManyToOne
+//    @JoinColumn(name = "contribution_id")
+//    private Contribution contribution;
 }

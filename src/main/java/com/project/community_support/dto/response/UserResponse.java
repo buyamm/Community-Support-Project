@@ -19,5 +19,5 @@ public class UserResponse {
     private String fullName;
     private String cccd;
     private String address;
-    private Set<Form> forms;
+
 }

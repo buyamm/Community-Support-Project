@@ -25,4 +25,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Form> forms;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Contribution> contributions;
 }

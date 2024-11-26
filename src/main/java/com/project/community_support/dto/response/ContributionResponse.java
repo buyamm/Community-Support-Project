@@ -19,5 +19,6 @@ public class ContributionResponse {
     private Long amount;
     private Instant date;
     private Map<String, Object> form = new HashMap<>();
-    private List<String> images;
+    private UserResponse userResponse;
+//    private List<String> images;
 }

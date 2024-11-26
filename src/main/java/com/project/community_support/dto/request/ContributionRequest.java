@@ -16,7 +16,8 @@ public class ContributionRequest {
     private Long amount;
     private Instant date;
     private String formId;
+    private String userId;
 
-    private List<String> images;
+//    private List<String> images;
 
 }

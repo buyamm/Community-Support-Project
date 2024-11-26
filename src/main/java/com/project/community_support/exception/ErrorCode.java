@@ -21,7 +21,7 @@ public enum ErrorCode {
     PASSWORD_INVALID(1006, "Password must be at least 8 character", HttpStatus.BAD_REQUEST),
     CCCD_INVALID(1007, "CCCD must be at least 12 character", HttpStatus.BAD_REQUEST),
 
-    FORM_NOT_ACCEPTED(1008, "Bieu mau chua duoc xac nhan", HttpStatus.BAD_REQUEST),
+    FORM_NOT_ACCEPTED(1008, "Biểu mẫu chưa được xác nhận. Vui lòng chờ xác nhận từ quản trị viên!", HttpStatus.BAD_REQUEST),
 
 
     INVALID_KEY(8888, "Invalid message key", HttpStatus.BAD_REQUEST),

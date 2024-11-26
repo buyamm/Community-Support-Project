@@ -21,10 +21,14 @@ public class Contribution {
     private Instant date;
     private Long amount;
 
-    @OneToMany(mappedBy = "contribution")
-    private Set<Images> images;
+//    @OneToMany(mappedBy = "contribution")
+//    private Set<Images> images;
 
     @ManyToOne
     @JoinColumn(name = "form_id")
     private Form form;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

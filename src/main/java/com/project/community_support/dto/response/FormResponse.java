@@ -4,10 +4,7 @@ import com.project.community_support.entity.BankAccount;
 import lombok.*;
 
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Setter
@@ -28,6 +25,7 @@ public class FormResponse {
     private boolean isTemp;
     private boolean isDone;
     private BankAccountResponse bankAccount;
+    private Set<ContributionResponse> contributionResponses;
     private List<String> images;
 }
 
