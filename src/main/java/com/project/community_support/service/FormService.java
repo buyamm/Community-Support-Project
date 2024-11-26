@@ -70,7 +70,6 @@ public class FormService {
             imageRepository.save(image);
         });
 
-        new FormResponse();
         return FormResponse.builder()
                 .id(form.getId())
                 .fullName(form.getFullName())

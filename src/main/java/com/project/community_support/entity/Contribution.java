@@ -3,23 +3,28 @@ package com.project.community_support.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+import java.time.Instant;
+import java.util.Set;
+
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Images {
+@Entity
+public class Contribution {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    private String path;
+
+    private String content;
+    private Instant date;
+    private Long amount;
+
+    @OneToMany(mappedBy = "contribution")
+    private Set<Images> images;
 
     @ManyToOne
     @JoinColumn(name = "form_id")
     private Form form;
-
-    @ManyToOne
-    @JoinColumn(name = "contribution_id")
-    private Contribution contribution;
 }

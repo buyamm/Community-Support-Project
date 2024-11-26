@@ -46,7 +46,12 @@ public class Form {
     @OneToMany(mappedBy = "form")
     private Set<Images> images;
 
+
     @OneToOne
     @JoinColumn(name = "bankAccount_id")
     private BankAccount bankAccount;
+
+    @OneToMany(mappedBy = "form")
+    private Set<Contribution> contributions;
+
 }
