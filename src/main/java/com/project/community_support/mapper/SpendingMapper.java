@@ -16,6 +16,7 @@ public interface SpendingMapper {
     @Mapping(target = "form", ignore = true)
     Spending toSpending(SpendingRequest request);
 
+    @Mapping(target = "form", ignore = true)
     SpendingResponse toSpendingResponse(Spending spending);
 
 }
