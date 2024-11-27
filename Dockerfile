@@ -8,7 +8,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build source code with Maven
-RUN mvn package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Stage 2: create image
 # Borrow another image to package our application and run it
